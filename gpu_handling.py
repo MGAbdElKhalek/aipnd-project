@@ -12,7 +12,7 @@ def hw_control(data, gpu_flag):
             warnings.warn("You requested GPU but we couldn't so it's on cpu")
         else:
             data = data.to(device)
-            print("Successfuly sent to gpu")
+#            print("Successfuly sent to gpu")
     else:
         ("The model is in cpu as requested by default")
     

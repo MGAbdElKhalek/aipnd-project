@@ -52,7 +52,7 @@ def creat_model(pre_model_arch, hidden_layers_size, input_size, output_size):
     
     return model_flower_imgs
 
-def evaluation(model, data_loader, criterion):
+def evaluation(model, data_loader, criterion, gpu_f):
     ''' Test the performence of NN against givien data set either validation of test.
        
         Arguments
@@ -67,8 +67,8 @@ def evaluation(model, data_loader, criterion):
 
     for image, label in data_loader:
         
-        images = send_data_gpu(images)
-        labels = send_data_gpu(labels)
+        image, device = hw_control(image, gpu_f)
+        label, device = hw_control(label, gpu_f)
         
         output = model.forward(image)
         loss += criterion(output,label).item()
@@ -93,7 +93,6 @@ def model_training(model, dataloader_train, dataloader_valid, gpu_f, learn_r, nu
             optmizer.zero_grad()
             images, device = hw_control(images, gpu_f)
             labels, device = hw_control(labels, gpu_f)
-            print(device)
 
             output = model.forward(images)
             loss = criterion(output , labels)
@@ -103,7 +102,6 @@ def model_training(model, dataloader_train, dataloader_valid, gpu_f, learn_r, nu
         # Turn off gradients for validation, saves memory and computations
         with torch.no_grad():
             Valid_loss, accuracy = evaluation(model, dataloader_valid, criterion)
-    
-        print('Epoch {}/{}: Validation loss= {} \n Accuracy= {}'.format(e,num_epoches, Valid_loss, accuracy))
+            print('Epoch {}/{}: Validation loss= {} \n Accuracy= {}'.format(e,num_epoches, Valid_loss, accuracy))
     
     return model
