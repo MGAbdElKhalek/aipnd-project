@@ -1,5 +1,6 @@
 
 from collections import OrderedDict
+import torch
 from torch import nn
 from torch import optim
 from torchvision import models
@@ -101,7 +102,7 @@ def model_training(model, dataloader_train, dataloader_valid, gpu_f, learn_r, nu
     
         # Turn off gradients for validation, saves memory and computations
         with torch.no_grad():
-            Valid_loss, accuracy = evaluation(model, dataloader_valid, criterion)
+            Valid_loss, accuracy = evaluation(model, dataloader_valid, criterion, gpu_f)
             print('Epoch {}/{}: Validation loss= {} \n Accuracy= {}'.format(e,num_epoches, Valid_loss, accuracy))
     
     return model

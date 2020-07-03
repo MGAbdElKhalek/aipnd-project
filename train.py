@@ -22,7 +22,7 @@ def main():
     model = model_training(model_gpu, train_data_loader, valid_data_loader, in_arg.gpu, in_arg.learning_rate, in_arg.epochs)
     
     # Save CP of model
-    save_model_cp(model, arch, input_size, output_size, hidden_layers_size, in_arg.save_dir)
+    save_model_cp(model, in_arg.arch, 25088, 102, in_arg.hidden_units, in_arg.save_dir)
 
 
     
