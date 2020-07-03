@@ -15,7 +15,7 @@ def main():
     train_data_loader, valid_data_loader = data_preprocessing(in_arg.path)
     model = creat_model(in_arg.arch, in_arg.hidden_units, 25088, 102)
     
-    model.module_name = model
+    # Send model to gpu
     model_gpu, device = hw_control(model, in_arg.gpu)
 
     # Train the model    
