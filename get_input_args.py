@@ -16,7 +16,7 @@ def get_input_args_train():
                     help = 'Set directory to save checkpoints')
     parser.add_argument('--arch', type = str, default = 'vgg13', 
                     help = 'architecture for pretrained model')
-    parser.add_argument('--learning_rate', type = float, default = '0.01', 
+    parser.add_argument('--learning_rate', type = float, default = '0.001', 
                     help = 'Training learn rate')
     parser.add_argument('--hidden_units', nargs="*", type = int, default = [4096 , 1024], 
                     help = 'Hidden layers list for classifier')
