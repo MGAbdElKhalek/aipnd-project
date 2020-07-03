@@ -19,7 +19,7 @@ def main():
     model_gpu, device = hw_control(model, in_arg.gpu)
     
     # Perform the prediction
-    probs, classes = predict(in_arg.path, model_gpu, in_arg.top_k)
+    probs, classes = predict(in_arg.path, model, in_arg.top_k, in_arg.gpu)
 
     with open('cat_to_name.json', 'r') as f:
         cat_to_name = json.load(f)

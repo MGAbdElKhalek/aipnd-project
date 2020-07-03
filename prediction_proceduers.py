@@ -2,7 +2,7 @@ import torch
 
 
 
-def predict(image_path, model, topk):
+def predict(image_path, model, topk, gpu_f):
     ''' Predict the class (or classes) of an image using a trained deep learning model.
     Arguments
         ---------
@@ -13,7 +13,7 @@ def predict(image_path, model, topk):
     
     # Prepare image
     Tensor_image = process_image(image_path)
-    Tensor_image = Tensor_image.to(device)
+    Tensor_image, device = hw_control(Tensor_image, gpu_f)
     Tensor_image.unsqueeze_(0)
     Tensor_image = Tensor_image.float()
     
