@@ -36,7 +36,7 @@ def creat_model(pre_model_arch, hidden_layers_size, input_size, output_size):
 
     # Create the network, adjust classifier define the criterion and optimizer
     if pre_model_arch == "vgg13":
-        model_flower_imgs = models.vgg16(pretrained=True)
+        model_flower_imgs = models.vgg13(pretrained=True)
     elif pre_model_arch == "vgg16":
         model_flower_imgs = models.vgg16(pretrained=True)
     else:
