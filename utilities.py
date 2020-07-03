@@ -1,9 +1,11 @@
 
 import torch
 from torchvision import datasets, transforms
+from PIL import Image
 
 from datetime import datetime
 
+from model_handling import creat_model
 
 def data_preprocessing(data_dir):
     ''' Prepare images for training
@@ -63,10 +65,10 @@ def load_checkpoint(filepath):
     checkpoint = torch.load(filepath)
     
     # Create the network, adjust classifier define the criterion and optimizer
-    model_restored = creat_model(checkpoint[model_arch],
-                                 checkpoint[hidden_layers],
-                                 checkpoint[input_size], 
-                                 checkpoint[output_size])
+    model_restored = creat_model(checkpoint['model_arch'],
+                                 checkpoint['hidden_layers'],
+                                 checkpoint['input_size'], 
+                                 checkpoint['output_size'])
 
     model_restored.load_state_dict(checkpoint['state_dict'])
     

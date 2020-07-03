@@ -1,6 +1,7 @@
 import torch
 
-
+from utilities import process_image
+from gpu_handling import hw_control
 
 def predict(image_path, model, topk, gpu_f):
     ''' Predict the class (or classes) of an image using a trained deep learning model.
