@@ -49,8 +49,7 @@ def save_model_cp(model, arch, input_size, output_size, hidden_layers_size, dir_
                   'hidden_layers': hidden_layers_size,
                   'state_dict': model.state_dict()}
     
-    now = datetime.now()
-    cp_path = dir_cp + '/'+ str(now)
+    cp_path = datetime.now().strftime('{}/%Y_%m_%d_%H_%M.pth'.format(dir_cp))
 
     torch.save(checkpoint, cp_path)
     return None

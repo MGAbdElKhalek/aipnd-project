@@ -12,7 +12,7 @@ def get_input_args_train():
     
     parser.add_argument('path', type = str, default = './flowers',
                    help='path to the images folder')
-    parser.add_argument('--save_dir', type = str, default = './cp', 
+    parser.add_argument('--save_dir', type = str, default = './Checkpoints', 
                     help = 'Set directory to save checkpoints')
     parser.add_argument('--arch', type = str, default = 'vgg13', 
                     help = 'architecture for pretrained model')
